@@ -20,8 +20,8 @@ public class RoverService {
         this.rovers = new ArrayList<>();
     }
 
-    public RoverService(ArrayList<Rover> rovers) {
-        this.rovers = rovers;
+    public List<Rover> getRovers() {
+        return rovers;
     }
 
     public Rover create(String request) throws Exception {

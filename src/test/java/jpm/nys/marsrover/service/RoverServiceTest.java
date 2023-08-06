@@ -10,6 +10,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -20,6 +22,19 @@ public class RoverServiceTest {
     @BeforeEach
     public void setup() {
         subject = new RoverService();
+    }
+
+    @Test
+    @DisplayName("Get Rovers returns all rovers maintained in list")
+    public void getRoversReturnsAllRovers() throws Exception {
+        String request1 = "3,4,N";
+        subject.create(request1);
+
+        String request2 = "0,4,N";
+        subject.create(request2);
+
+        List<Rover> actual = subject.getRovers();
+        assertThat(actual.size()).isEqualTo(2);
     }
 
     @Test

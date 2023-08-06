@@ -7,6 +7,8 @@ import jpm.nys.marsrover.model.Rover;
 import jpm.nys.marsrover.service.RoverService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/v1")
 @Tag(name = "Rover Operations")
@@ -16,6 +18,12 @@ public class RoverController {
 
     public RoverController(RoverService roverService) {
         this.roverService = roverService;
+    }
+
+    @GetMapping("/allRovers")
+    @Operation(description = "Gets all rovers")
+    public List<Rover> getAll() {
+        return roverService.getRovers();
     }
 
     @GetMapping("/currentPosition")

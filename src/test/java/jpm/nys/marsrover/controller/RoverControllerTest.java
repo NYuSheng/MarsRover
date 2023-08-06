@@ -1,5 +1,6 @@
 package jpm.nys.marsrover.controller;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jpm.nys.marsrover.model.Coordinate;
 import jpm.nys.marsrover.model.Direction;
@@ -20,6 +21,9 @@ import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 @WebMvcTest(RoverController.class)
@@ -32,6 +36,23 @@ public class RoverControllerTest {
     private RoverService roverService;
 
     private final ObjectMapper objectMapper = new ObjectMapper();
+
+    @Test
+    @DisplayName("API is able to return response from rover service for getAll")
+    public void ableToGetAllRovers() throws Exception {
+        List<Rover> expected = new ArrayList();
+        expected.add(new Rover("R1", new Coordinate(Direction.N, 3, 4)));
+        Mockito.when(roverService.getRovers()).thenReturn(expected);
+
+        String endpoint = "/api/v1/allRovers";
+        MvcResult response = sendRequestWithGet(endpoint)
+            .andExpect(MockMvcResultMatchers.status().isOk())
+            .andReturn();
+
+        List<Rover> actual = objectMapper.readValue(response.getResponse().getContentAsString(), new TypeReference<List<Rover>>() {
+        });
+        assertThat(actual.size()).isEqualTo(1);
+    }
 
     @Test
     @DisplayName("API is able to return response from rover service for create")
