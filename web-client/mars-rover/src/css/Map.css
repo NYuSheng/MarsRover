@@ -1,0 +1,39 @@
+.recharts-xAxis {
+    transform: translate(0, -230px);
+}
+
+.recharts-yAxis {
+    transform: translate(315px, 0);
+}
+
+.map-container {
+    margin: 10px;
+}
+
+.north-label {
+    margin-bottom: 40px;
+    font-weight: 500;
+}
+
+.east-label {
+    margin-top: 225px;
+    margin-left: 40px;
+    font-weight: 500;
+}
+
+.west-label {
+    margin-top: 225px;
+    font-weight: 500;
+}
+
+.south-label {
+    font-weight: 500;
+}
+
+.rover-tooltip {
+    background-color: lightgrey;
+    padding: 10px;
+    font-size: 14px;
+    text-align: left;
+}
+

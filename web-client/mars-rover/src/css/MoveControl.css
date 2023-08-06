@@ -1,0 +1,46 @@
+.move-input {
+    display: flex;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+.move-input label {
+    margin-right: 10px;
+}
+
+.move-input input, select {
+    width: 100px;
+}
+
+.move-input .move-command-input {
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 200px;
+}
+
+.move-control-btns button:not(:last-child) {
+    margin-right: 5px;
+}
+
+.move-inputs {
+    display: flex;
+    flex-grow: 2;
+    margin: 10px;
+}
+
+.move-container {
+    display: flex;
+    margin: 10px;
+}
+
+.move-label {
+    font-weight: 500;
+    margin: 10px;
+    width: 100px;
+}
+
+.move-btn {
+    margin: auto 10px;
+    width: 100px;
+    height: 25px;
+}
